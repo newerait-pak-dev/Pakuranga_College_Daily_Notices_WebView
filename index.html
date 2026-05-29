@@ -7,215 +7,159 @@
   <title>Pakuranga College — Daily Notices</title>
   <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700;900&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet" />
   <style>
-    :root {
-      --teal:  #6dbecb;
-      --navy:  #034258;
-      --white: #ffffff;
-    }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html, body {
       width: 1920px;
       height: 1080px;
       overflow: hidden;
+      background: #ffffff;
       font-family: 'Source Sans 3', sans-serif;
-      background: var(--navy);
     }
 
     .page {
-      display: grid;
-      grid-template-columns: 290px 1fr;
+      display: flex;
+      flex-direction: column;
       width: 1920px;
       height: 1080px;
       overflow: hidden;
     }
 
-    /* ── SIDEBAR ── */
-    .sidebar {
-      background: var(--navy);
+    /* ── HEADER ── */
+    .header {
       display: flex;
-      flex-direction: column;
       align-items: center;
-      justify-content: center;
-      gap: 32px;
-      padding: 48px 24px;
-      border-right: 5px solid var(--teal);
-      position: relative;
+      justify-content: space-between;
+      background: #034258;
+      border-bottom: 4px solid #6dbecb;
+      padding: 0 52px;
+      height: 100px;
+      flex-shrink: 0;
+      width: 1920px;
     }
-    .sidebar::before,
-    .sidebar::after {
-      content: '';
-      position: absolute;
-      left: 0; right: 0;
-      height: 5px;
-      background: var(--teal);
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 20px;
     }
-    .sidebar::before { top: 0; }
-    .sidebar::after  { bottom: 0; }
 
     .logo-ring {
-      width: 190px;
-      height: 190px;
+      width: 70px;
+      height: 70px;
       border-radius: 50%;
-      background: var(--teal);
+      background: #6dbecb;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 0 0 6px rgba(109,190,203,0.3), 0 0 50px rgba(109,190,203,0.2);
       flex-shrink: 0;
     }
     .logo-ring img {
-      width: 162px;
-      height: 162px;
+      width: 60px;
+      height: 60px;
       object-fit: contain;
       border-radius: 50%;
-      background: var(--teal);
     }
 
     .school-name {
       font-family: 'Merriweather', serif;
-      font-size: 25px;
+      font-size: 28px;
       font-weight: 900;
-      color: var(--white);
-      text-align: center;
-      line-height: 1.3;
+      color: #ffffff;
+      letter-spacing: 0.5px;
+      line-height: 1;
     }
     .school-name .sub {
       display: block;
       font-family: 'Source Sans 3', sans-serif;
       font-size: 11px;
       font-weight: 700;
-      color: var(--teal);
+      color: #6dbecb;
       letter-spacing: 4px;
       text-transform: uppercase;
-      margin-top: 10px;
+      margin-top: 6px;
     }
 
-    .rule {
-      width: 50px;
-      height: 3px;
-      background: var(--teal);
-      border-radius: 2px;
+    .header-right {
+      text-align: right;
     }
-
-    .live-badge {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 12px;
-      font-weight: 700;
-      color: var(--teal);
-      letter-spacing: 3px;
-      text-transform: uppercase;
-    }
-    .live-dot {
-      width: 9px;
-      height: 9px;
-      border-radius: 50%;
-      background: var(--teal);
-      animation: blink 2.5s ease-in-out infinite;
-    }
-    @keyframes blink {
-      0%,100% { opacity:1; }
-      50%      { opacity:0.2; }
-    }
-
-    /* ── MAIN ── */
-    .main {
-      display: flex;
-      flex-direction: column;
-      background: var(--teal);
-      overflow: hidden;
-    }
-
-    .header {
-      background: var(--navy);
-      padding: 22px 52px;
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      flex-shrink: 0;
-      border-bottom: 4px solid var(--teal);
-    }
-    .header h1 {
+    .header-time {
       font-family: 'Merriweather', serif;
-      font-size: 30px;
+      font-size: 38px;
       font-weight: 900;
-      color: var(--white);
-      letter-spacing: 0.5px;
+      color: #ffffff;
+      line-height: 1;
     }
-    .header h1 em {
-      font-style: normal;
-      color: var(--teal);
+    .header-date {
+      font-size: 14px;
+      font-weight: 600;
+      color: #6dbecb;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-top: 6px;
     }
 
-    .widget-area {
+    /* ── FEED ── */
+    .feed {
       flex: 1;
       overflow: hidden;
-      background: #fff;
+      background: #ffffff;
       display: flex;
+      align-items: flex-start;
+      justify-content: center;
     }
-    .widget-area iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
+    .feed iframe {
       display: block;
-    }
-
-    .bottom-bar {
-      height: 42px;
-      background: var(--navy);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 52px;
+      width: 1920px;
+      height: 980px;
+      border: none;
       flex-shrink: 0;
-      border-top: 3px solid var(--teal);
-    }
-    .bottom-bar .left {
-      font-size: 11px;
-      color: rgba(109,190,203,0.7);
-      letter-spacing: 2px;
-      text-transform: uppercase;
-    }
-    .bottom-bar .right {
-      font-size: 11px;
-      color: rgba(109,190,203,0.4);
-      letter-spacing: 2px;
-      text-transform: uppercase;
     }
   </style>
 </head>
 <body>
 <div class="page">
 
-  <aside class="sidebar">
-    <div class="logo-ring">
-      <img src="data:image/png;base64,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" alt="Pakuranga College Crest" />
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-left">
+      <div class="logo-ring">
+        <img src="data:image/png;base64,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" alt="Pakuranga College Crest" />
+      </div>
+      <div class="school-name">
+        Pakuranga College
+        <span>Daily Notices</span>
+      </div>
     </div>
-    <div class="school-name">
-      Pakuranga College
-      <span>Daily Notices</span>
+    <div class="header-right">
+      <div class="header-time" id="clock">--:--</div>
+      <div class="header-date" id="date-display"></div>
     </div>
-    <div class="rule"></div>
-    <div class="live-badge">
-      <div class="live-dot"></div>
-      Live Feed
-    </div>
-  </aside>
+  </div>
 
-  <main class="main">
-    <div class="header">
-      <h1>Today's <em>Notices</em></h1>
-    </div>
-    <div class="widget-area">
-      <iframe src="https://feed.mikle.com/widget/v2/62216/?preloader-text=Notices%20are%20loading%20...&" height="1020px" width="1800px" class="fw-iframe" scrolling="no" frameborder="0"></iframe>
-    </div>
-    <div class="bottom-bar">
-      <div class="left">Pakuranga College — Notices synced via Kamar</div>
-      <div class="right">Auto-refreshes every 5 min · OptiSigns</div>
-    </div>
-  </main>
+  <!-- FEED -->
+  <div class="feed">
+    <iframe src="https://feed.mikle.com/widget/v2/62216/?preloader-text=Notices%20are%20loading%20...&" class="fw-iframe" scrolling="no" frameborder="0"></iframe>
+  </div>
 
 </div>
+
+<script>
+  const DAYS   = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+
+  function updateClock() {
+    const now = new Date();
+    const hh  = String(now.getHours()).padStart(2, '0');
+    const mm  = String(now.getMinutes()).padStart(2, '0');
+    const ss  = String(now.getSeconds()).padStart(2, '0');
+    document.getElementById('clock').textContent = hh + ':' + mm + ':' + ss;
+    document.getElementById('date-display').textContent =
+      DAYS[now.getDay()] + ' ' + now.getDate() + ' ' + MONTHS[now.getMonth()] + ' ' + now.getFullYear();
+  }
+
+  updateClock();
+  setInterval(updateClock, 1000);
+</script>
+
 </body>
 </html>
